@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: var(--font-urbanist);
+  --color-text-primary: var(--color-zinc-50);
+  --color-primary: var(--color-red-600);
+  --color-background: var(--color-black);
+}
+
+* {
+  @apply text-text-primary;
+}
+
+a:not(.no-style) {
+  transition: background-size 0.3s;
+  background-size: 0 3px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-primary)
+  );
+}
+
+a:not(.no-style):hover,
+a:not(.no-style).active {
+  background-size: 100% 3px;
+}
+
+a:not(.no-style).active {
+  @apply text-primary;
+}

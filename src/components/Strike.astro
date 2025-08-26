@@ -1,0 +1,54 @@
+---
+interface Props {
+  style?: 'primary' | 'ghost';
+  class?: string;
+}
+
+const { style = 'primary', class: className } = Astro.props;
+---
+
+<div class:list={['strike', style, className]} role="button">
+  <slot />
+</div>
+
+<style>
+  .strike {
+    position: relative;
+  }
+
+  .strike::before,
+  .strike::after {
+    top: 0;
+    left: 0;
+    content: ' ';
+    position: absolute;
+  }
+
+  /* Background */
+  .strike:not(.no-background)::before {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 2px;
+    transform: rotate(-2deg) skew(-2deg);
+  }
+
+  .strike:not(.no-background).primary::before,
+  .strike.primary::after {
+    background-color: var(--color-primary);
+  }
+
+  .strike:not(.no-background).ghost::before,
+  .strike.ghost::after {
+    background-color: var(--color-background);
+  }
+
+  /* Line */
+  .strike::after {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 16%;
+    pointer-events: none;
+  }
+</style>
