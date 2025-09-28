@@ -17,7 +17,9 @@ import Footer from '@/components/Footer.astro';
     <title>Cancelled Studio</title>
     <Font cssVariable="--font-urbanist" preload />
   </head>
-  <body class="bg-background max-w-[888px] min-h-screen mx-auto flex flex-col">
+  <body
+    class="bg-background max-w-[888px] min-h-screen mx-auto flex flex-col px-4 sm:px-0"
+  >
     <Header />
     <main class:list={['grow', className]}>
       <slot />
